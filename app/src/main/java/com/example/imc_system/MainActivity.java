@@ -2,14 +2,17 @@ package com.example.imc_system;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static java.lang.String.format;
 
@@ -24,43 +27,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         inputHeight = (EditText) findViewById(R.id.inputHeight);
         inputWeight = (EditText) findViewById(R.id.inputWeight);
-        fieldResult = (TextView) findViewById(R.id.fieldResult);
-        lblResult = (TextView) findViewById(R.id.lblResult);
         btnCalc = (Button) findViewById(R.id.btnCalc);
 
         btnCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calc(view);
+                goToResults(view);
             }
         });
     }
 
-    public void calc(View view) {
-        double altura = Double.parseDouble(inputHeight.getText().toString());
-        double peso = Double.parseDouble(inputWeight.getText().toString());
-        displayResult(Math.round(peso / Math.pow(altura, 2)));
-    }
-
-    public void displayResult(double result) {
-        int resultColor = 0;
-        String resultMessage = "";
-
-        if (result < 18) {
-            resultMessage = "Você está MAGRELO!";
-            resultColor = Color.YELLOW;
-        } else if (result > 18 && result < 25) {
-            resultMessage = "Você está OK!";
-            resultColor = Color.GREEN;
+    public void goToResults(View view) {
+        if (TextUtils.isEmpty(inputHeight.getText())) {
+            Toast.makeText(getApplicationContext(), "O campo de altura está vazio!", Toast.LENGTH_SHORT);
+            inputHeight.setError("Altura é um campo obrigatório!");
+        } else if (TextUtils.isEmpty(inputWeight.getText())) {
+            Toast.makeText(getApplicationContext(), "O campo de peso está vazio!", Toast.LENGTH_SHORT);
+            inputHeight.setError("Peso é um campo obrigatório!");
         } else {
-            resultMessage = "Você está GORDO";
-            resultColor = Color.RED;
+            Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+            intent.putExtra("HEIGHT", inputHeight.getText().toString());
+            intent.putExtra("WEIGHT", inputWeight.getText().toString());
+            startActivity(intent);
         }
-
-        lblResult.setText(resultMessage);
-        lblResult.setTextColor(resultColor);
-        fieldResult.setText(String.valueOf(result));
-        fieldResult.setTextColor(resultColor);
     }
 
 }

@@ -5,4 +5,5 @@
     <string name="weight">Peso</string>
     <string name="weight_hint">Ex.: 67.5</string>
     <string name="calc">Calcular</string>
+    <string name="back">Voltar</string>
 </resources>
