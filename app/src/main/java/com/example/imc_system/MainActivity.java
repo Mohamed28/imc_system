@@ -37,11 +37,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calc(View view) {
-        int resultColor = 0;
-        String resultMessage = "";
         double altura = Double.parseDouble(inputHeight.getText().toString());
         double peso = Double.parseDouble(inputWeight.getText().toString());
-        double result = Math.round(peso / Math.pow(altura, 2));
+        displayResult(Math.round(peso / Math.pow(altura, 2)));
+    }
+
+    public void displayResult(double result) {
+        int resultColor = 0;
+        String resultMessage = "";
 
         if (result < 18) {
             resultMessage = "Você está MAGRELO!";

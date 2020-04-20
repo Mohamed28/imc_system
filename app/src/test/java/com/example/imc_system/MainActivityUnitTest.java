@@ -9,9 +9,10 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class ExampleUnitTest {
+public class MainActivityUnitTest {
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void imc_calculation_isCorrect() {
+        double height = 1.76, weight = 65;
+        assertEquals(20.98, weight/Math.pow(height, 2), 0.2);
     }
 }
