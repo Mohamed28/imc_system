@@ -27,32 +27,32 @@ public class MainActivityInstrumentedTest {
     public ActivityTestRule<MainActivity> activityRule =
             new ActivityTestRule<MainActivity>(MainActivity.class);
 
-    @Test
-    public void that_clicking_calculation_button_IMC_is_calculated() throws Exception {
-        onView(withId(R.id.inputHeight)).perform(typeText("1.76")).perform(closeSoftKeyboard());
-        onView(withId(R.id.inputWeight)).perform(typeText("65")).perform(closeSoftKeyboard());
-        onView(withId(R.id.btnCalc)).perform(click());
-        onView(withText("21.0")).check(matches(isDisplayed()));
-    }
-
-    public void that_low_IMC_results_are_correctly_displayed() throws Exception {
-        onView(withId(R.id.inputHeight)).perform(typeText("1.76")).perform(closeSoftKeyboard());
-        onView(withId(R.id.inputWeight)).perform(typeText("40")).perform(closeSoftKeyboard());
-        onView(withId(R.id.btnCalc)).perform(click());
-        onView(withText("Você está MAGRELO!")).check(matches(isDisplayed()));
-    }
-
-    public void that_average_IMC_results_are_correctly_displayed() throws Exception {
-        onView(withId(R.id.inputHeight)).perform(typeText("1.76")).perform(closeSoftKeyboard());
-        onView(withId(R.id.inputWeight)).perform(typeText("65")).perform(closeSoftKeyboard());
-        onView(withId(R.id.btnCalc)).perform(click());
-        onView(withText("Você está OK!")).check(matches(isDisplayed()));
-    }
-
-    public void that_high_IMC_results_are_correctly_displayed() throws Exception {
-        onView(withId(R.id.inputHeight)).perform(typeText("1.76")).perform(closeSoftKeyboard());
-        onView(withId(R.id.inputWeight)).perform(typeText("90")).perform(closeSoftKeyboard());
-        onView(withId(R.id.btnCalc)).perform(click());
-        onView(withText("Você está GORDO!")).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void that_clicking_calculation_button_IMC_is_calculated() throws Exception {
+//        onView(withId(R.id.inputHeight)).perform(typeText("1.76")).perform(closeSoftKeyboard());
+//        onView(withId(R.id.inputWeight)).perform(typeText("65")).perform(closeSoftKeyboard());
+//        onView(withId(R.id.btnCalc)).perform(click());
+//        onView(withText("21.0")).check(matches(isDisplayed()));
+//    }
+//
+//    public void that_low_IMC_results_are_correctly_displayed() throws Exception {
+//        onView(withId(R.id.inputHeight)).perform(typeText("1.76")).perform(closeSoftKeyboard());
+//        onView(withId(R.id.inputWeight)).perform(typeText("40")).perform(closeSoftKeyboard());
+//        onView(withId(R.id.btnCalc)).perform(click());
+//        onView(withText("Você está MAGRELO!")).check(matches(isDisplayed()));
+//    }
+//
+//    public void that_average_IMC_results_are_correctly_displayed() throws Exception {
+//        onView(withId(R.id.inputHeight)).perform(typeText("1.76")).perform(closeSoftKeyboard());
+//        onView(withId(R.id.inputWeight)).perform(typeText("65")).perform(closeSoftKeyboard());
+//        onView(withId(R.id.btnCalc)).perform(click());
+//        onView(withText("Você está OK!")).check(matches(isDisplayed()));
+//    }
+//
+//    public void that_high_IMC_results_are_correctly_displayed() throws Exception {
+//        onView(withId(R.id.inputHeight)).perform(typeText("1.76")).perform(closeSoftKeyboard());
+//        onView(withId(R.id.inputWeight)).perform(typeText("90")).perform(closeSoftKeyboard());
+//        onView(withId(R.id.btnCalc)).perform(click());
+//        onView(withText("Você está GORDO!")).check(matches(isDisplayed()));
+//    }
 }

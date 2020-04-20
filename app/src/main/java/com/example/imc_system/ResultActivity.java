@@ -10,7 +10,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Objects;
+
 public class ResultActivity extends AppCompatActivity {
+    private double result;
+//    private char gender;
     private TextView fieldResult, lblResult;
     private Button btnBack;
 
@@ -18,29 +22,10 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        fieldResult = (TextView) findViewById(R.id.fieldResult);
-        lblResult = (TextView) findViewById(R.id.lblResult);
-        btnBack = (Button) findViewById(R.id.btnBack);
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                back(view);
-            }
-        });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        calculate(findViewById(R.id.result_activity));
-    }
-
-    public void calculate(View view) {
-        Bundle extras = getIntent().getExtras();
-        double height = extras.getDouble("HEIGHT");
-        double weight = extras.getDouble("WEIGHT");
-        displayResult(Math.round(weight / Math.pow(height, 2)));
+        result = Double.parseDouble(getIntent().getStringExtra("RESULT"));
+//        gender = Character.toUpperCase(intent.getStringExtra("GENDER").charAt(0));
+        displayResult(result);
     }
 
     public void displayResult(double result) {
@@ -57,6 +42,33 @@ public class ResultActivity extends AppCompatActivity {
             resultMessage = "Você está GORDO";
             resultColor = Color.RED;
         }
+
+//        switch (gender){
+//            case 'M':
+//                if (result < 18) {
+//                    resultMessage = "Você está MAGRELO!";
+//                    resultColor = Color.YELLOW;
+//                } else if (result > 18 && result < 25) {
+//                    resultMessage = "Você está OK!";
+//                    resultColor = Color.GREEN;
+//                } else {
+//                    resultMessage = "Você está GORDO";
+//                    resultColor = Color.RED;
+//                }
+//                break;
+//            case 'F':
+//                if (result < 18) {
+//                    resultMessage = "Você está MAGRELA!";
+//                    resultColor = Color.YELLOW;
+//                } else if (result > 18 && result < 25) {
+//                    resultMessage = "Você está BEEM!";
+//                    resultColor = Color.GREEN;
+//                } else {
+//                    resultMessage = "Você está GORDA";
+//                    resultColor = Color.RED;
+//                }
+//                break;
+//        }
 
         lblResult.setText(resultMessage);
         lblResult.setTextColor(resultColor);
