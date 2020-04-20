@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Calculadora IMC</string>
+    <string name="height">Altura</string>
+    <string name="height_hint">Ex.: 1.78</string>
+    <string name="weight">Peso</string>
+    <string name="weight_hint">Ex.: 67.5</string>
+    <string name="calc">Calcular</string>
+</resources>
